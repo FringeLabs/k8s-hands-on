@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  fleetman-webapp
+spec:
+    # This defines which pods are going to be represented by this Service.
+    # The servicie becomes a network endpoint for either other services
+    # or maybe external users to connect to (eg browser)
+  selector:
+    app: webapp
+    release: "0-5"
+  
+  ports:
+    # Name is just a label to let you know which is
+    # the type of traffic. No "functional" interference.
+  - name:  http
+
+    # Port inside the pod
+    port:  80
+
+    # This is only for NodePorts: external port to make webapp accessible.
+    # it can be any port grater than 30000.
+    # You can override it, but it was designed this way to avoid clashes.
+    # It is good for local development but in production  we
+    # want to go with featured LoadBalancer instead.
+    # HINT: it has to be called "nodePort" instead of targetPort
+    nodePort: 30080
+
+    # LoadBalancer: not available to run locally
+    # ClusterIp: only visible inside the cluster (not accessible externally) - good for private services
+    # NodePort: exposes the service external, exposing a port through the Node.
+  type: NodePort

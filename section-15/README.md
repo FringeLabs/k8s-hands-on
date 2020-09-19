@@ -32,4 +32,6 @@ On this tutorial I'm re-using bootstrap machine and kops groups / user.
 Assuming that you already have kubectl, eksctl and aws cli installed and configured:
 * Run: `eksctl create cluster --name fleetman --nodes-min=3`
 * It will create a CloudFormation stack with all resources of the EKS cluster - it should take around 20 minutes or so;
+* You can test running `kubectl get all`;
+* You will see that CloudFOrmation stacks and a cluster were created. Also, some EC2 instances;
 * 

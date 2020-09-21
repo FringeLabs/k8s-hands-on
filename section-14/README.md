@@ -31,7 +31,7 @@ Once you have the IP and the pem file:
 2. Go to the folder you have the pem file;
 3. Connect to EC2: `ssh -i <pem file> ec2-user@<public ip address>`
 4. If you have permission issues with the key: `chmod go-rwx <pem file>`
-5. Install Kops on Linux: https://kops.sigs.k8s.io/getting_started/install/
+5. Install Kops on Linux: https://github.com/kubernetes/kops/blob/master/docs/getting_started/install.md
 6. Install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 7. Create user using CLI or IAM in the console:
    1. Go to IAM and click on Groups;
@@ -89,11 +89,3 @@ Moving forward, check the created loadbalancer. You will see he points to the ma
 You also will notice the ASG will "protect" your nodes, keeping a minimum of nodes running for your infrastructure.
 
 ***TEST***: terminate one worker node to simulate a DC crash. See what happens refreshing the screen. Run `kubectl get nodes` for details.
-
-
-
-
-
-
-
-

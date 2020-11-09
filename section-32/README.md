@@ -11,3 +11,18 @@ If you create as a Pod, you will notice that `Restart policy` will make this pod
 Please check the K8s documentation on the workloads `Job`.
 
 
+## Cron Jobs
+
+The kind `CronJob` can be found at `batck/v1beta1` (apiVersion). It behaves exaclty like Cron tab and you aare able to schedule jobs to be executed with same rules. You can always `get` or `describe` a cronjob on `kubectl`, like `kubectl get cronjob`.
+
+
+## DaemonSets
+
+A DaemonSet ensures that all nodes run a copy of a Pod. As nodes are added to the cluster, Pods are added to them.
+It may be very useful to run agents. It is rare on the microservices architecture have a service like this.
+
+In order to create a DaemonSets you can just declare a `Deployment` and change the type to `DaemonSet`, removing the field `replicas`.
+
+
+## StatefulSets Overview
+

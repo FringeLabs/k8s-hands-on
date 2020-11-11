@@ -26,3 +26,23 @@ In order to create a DaemonSets you can just declare a `Deployment` and change t
 
 ## StatefulSets Overview
 
+Object to manage stateful applications. It is important to understand **IT'S NOT USED FOR PERSISTENCE** on k8s.
+We didn't use it so far, but we have persistence. Mongo pod saves data on hard disk, outside the containers (on EBS).
+
+Statefulset means on K8s something very specific: we treat pods like cattle, not pets. But sometimes you need set of pods with known, predictable names...and you want clients to be able to call them, **by their name**.
+
+### Treating your pods as pets
+
+if the reason to maintain the name is a requirement to access the app with predictable names, From K8s 1.3 and afterwards we have an object called "PetSet":
+* In a `PetSet` the pods will have a predictable name: 0, 1, 2...
+* The pods will always start up in sequence;
+* Client can address them by name (a very useful feature);
+
+### A PetSet with "Headless Services"
+
+There is no syntax in the yaml for headless services. This is when the service is loadbalancing based on client requests that are referencing to a specific pods.
+
+`So, StatefultSet is the name rebranding of PetSet`. 
+
+
+

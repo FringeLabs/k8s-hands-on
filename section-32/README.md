@@ -44,5 +44,16 @@ There is no syntax in the yaml for headless services. This is when the service i
 
 `So, StatefultSet is the name rebranding of PetSet`. 
 
+## Statefulsets for Database Replication
 
+When do use Statefulsets? When you have a database **but you want to replicate it**. Databases can't usually be replicated by simple ReplicaSets/Deployments.
+
+It depends of the database implementation but usually or often at least, you can't just replicate a database using deployments.
+To have a client accessing the database you need predictable names: `mongodb://mongo-0.mongodb` (when you know the primary) or `mongodb://mongo-0.mongodb,mongo-1.mongodb,mongo-2.mongodb`.
+
+## Scaling out a Mongo Database
+
+We created DB pods for example purposes, but in reality, they are hard to manage inside pods. Almost always, if I possibly can, prefer go to a hosted service.
+
+**Note**: to make this work you need a side car (https://github.com/cvallance/mongo-k8s-sidecar). Check the page to understand the details of it to have mongo working on the example.
 
